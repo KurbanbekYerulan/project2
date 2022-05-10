@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Profile;
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -22,7 +23,7 @@ class UsersTableSeeder extends Seeder
         ]);
         Profile::create([
             'user_id'=> $user->id,
-            'avataro' =>   'uploads/avatars/1.jpeg',
+            'avataro' =>   'uploads/avatars/img.png',
             'about'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores autem consectetur itaque numquam omnis qui quis quos, tenetur? Ab ad aliquam consequatur doloremque earum eligendi esse impedit quae, ullam veritatis.',
             'facebook'=>'facebook.com',
             'youtube'=>'youtube.com'

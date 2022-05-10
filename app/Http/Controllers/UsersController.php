@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
-        //
+        return view('admin.users.index')->with('users',User::all());
     }
 
     /**
@@ -23,18 +25,44 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function admin($id){
+        $user = User::find($id);
+        $user->admin = 1;
+        $user->save();
+        session()->flash('success','Successfully changed user permissions !');
+        return redirect()->route('users');
+    }
+    public function not_admin($id){
+        $user = User::find($id);
+        $user->admin = 0;
+        $user->save();
+        session()->flash('success','Successfully changed user permissions !');
+        return redirect()->route('users');
+    }
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=> 'required',
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);
+        $user =  User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password'=> bcrypt($request->password)
+        ]);
+        $profile = Profile::create([
+            'user_id'=> $user->id,
+            'avataro'=>'uploads/avatars/img.png',
+            'about'=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores autem consectetur itaque numquam omnis qui quis quos, tenetur? Ab ad aliquam consequatur doloremque earum eligendi esse impedit quae, ullam veritatis.',
+            'facebook'=>'facebook.com',
+            'youtube'=>'youtube.com'
+        ]);
+        session()->flash('success','User created successfully!');
+        return redirect()->route('users');
     }
 
     /**
@@ -59,26 +87,21 @@ class UsersController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->profile->delete();
+        User::destroy($id);
+
+        session()->flash('success','User deleted successfully!');
+        return redirect()->route('users');
     }
+
 }

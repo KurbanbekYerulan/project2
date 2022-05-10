@@ -16,7 +16,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('avataro')->nullable();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->text('about')->nullable();
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable() ;
