@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use MongoDB\Driver\Session;
 use Illuminate\Support\Str;
 class PostsController extends Controller
@@ -46,15 +47,16 @@ class PostsController extends Controller
         $featured = $request->fetured;
         $filename = time().$featured->getClientOriginalExtension();
         $featured->move('uploads/posts',$filename  );
-
         $post = Post::create([
             'title' => $request->title,
             'fetured'=>'uploads/posts/' . $filename,
+            'user_id'=> \auth()->user()->id,
             'contents'=> $request->contents,
-            'category_id' => $request->category_id,
-            'slug'=> str_slug($request->title)
+            'slug'=> str_slug($request->title),
+            'category_id' => $request->category_id
         ]);
         $post->tags()->attach($request->tags);
+        session()->flash('success','You succesfully created a post');
         return redirect()->back();
     }
 

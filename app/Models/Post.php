@@ -20,12 +20,16 @@ class Post extends Model
     public function tags(){
         return $this->belongsToMany('App\Models\Tag');
     }
+    public function user(){
+         return $this->belongsTo('App\Models\User');
+    }
     protected $fillable = [
         'title',
         'contents',
         'fetured',
         'category_id',
-        'slug'
+        'slug',
+        'user_id'
     ];
     protected $dates = [
         'deleted_at'

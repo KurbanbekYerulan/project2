@@ -1,32 +1,454 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{$title}}</title>
 
-        <title>Laravel</title>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/fonts.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/crumina-fonts.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/normalize.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/grid.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/styles.css")}}>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
+    <!--Plugins styles-->
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/jquery.mCustomScrollbar.min.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/swiper.min.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/primary-menu.css")}}>
+    <link rel="stylesheet" type="text/css" href={{asset("app/css/magnific-popup.css")}}>
 
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+    <!--Styles for RTL-->
 
-            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+    <!--<link rel="stylesheet" type="text/css" href="app/css/rtl.css">-->
+
+    <!--External fonts-->
+
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <style>
+        .padded-50{
+            padding: 40px;
+        }
+        .text-center{
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+
+<body class=" ">
+
+<div class="content-wrapper">
+
+    @include('includes.header')
+    <div class="header-spacer"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            @if($first_post)
+            <div class="col-lg-8">
+                <article class="hentry post post-standard has-post-thumbnail sticky">
+
+                    <div class="post-thumb">
+                        <img src="{{asset( $first_post->fetured )}}" alt="{{$first_post->title}}">
+                        <div class="overlay"></div>
+                        <a href="{{asset( $first_post->fetured)}}" class="link-image js-zoom-image">
+                            <i class="seoicon-zoom"></i>
+                        </a>
+                        <a href="#" class="link-post">
+                            <i class="seoicon-link-bold"></i>
+                        </a>
+                    </div>
+
+                    <div class="post__content">
+
+                        <div class="post__content-info">
+
+                            <h2 class="post__title entry-title text-center">
+                                <a href="{{ route('single_post',['slug'=>$first_post->slug]) }}">{{$first_post->title}}</a>
+                            </h2>
+
+                            <div class="post-additional-info">
+
+                                        <span class="post__date">
+
+                                            <i class="seoicon-clock"></i>
+
+                                            <time class="published" datetime="2016-04-17 12:00:00">
+                                                {{  $first_post->created_at->diffForHumans() }}
+                                            </time>
+
+                                        </span>
+
+                                <span class="category">
+                                            <i class="seoicon-tags"></i>
+                                            <a href="#">Video</a>
+                                        </span>
+
+                                <span class="post__comments">
+                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                            6
+                                        </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+            @endif
+            <div class="col-lg-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                @if($second_post)
+                <article class="hentry post post-standard has-post-thumbnail sticky">
+
+                    <div class="post-thumb">
+                        <img src="{{asset($second_post->fetured)}}" alt="{{$second_post->title}}">
+                        <div class="overlay"></div>
+                        <a href="{{asset($second_post->fetured)}}" class="link-image js-zoom-image">
+                            <i class="seoicon-zoom"></i>
+                        </a>
+                        <a href="#" class="link-post">
+                            <i class="seoicon-link-bold"></i>
+                        </a>
+                    </div>
+
+                    <div class="post__content">
+
+                        <div class="post__content-info">
+
+                            <h2 class="post__title entry-title text-center">
+                                <a href="15_blog_details.html">{{$second_post->title}}</a>
+                            </h2>
+
+                            <div class="post-additional-info">
+
+                                        <span class="post__date">
+
+                                            <i class="seoicon-clock"></i>
+
+                                            <time class="published" datetime="2016-04-17 12:00:00">
+                                                {{$second_post->created_at->toFormattedDateString()}}
+                                            </time>
+
+                                        </span>
+
+                                <span class="category">
+                                            <i class="seoicon-tags"></i>
+                                            <a href="{{route('category.single', ['id'=>$second_post ->category->id])}}">{{$second_post->category->name}}</a>
+                                        </span>
+
+                                <span class="post__comments">
+                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                            6
+                                        </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+                @endif
+            </div>
+            <div class="col-lg-6">
+                @if($third_post)
+                <article class="hentry post post-standard has-post-thumbnail sticky">
+
+                    <div class="post-thumb">
+                        <img src="{{asset($third_post->fetured)}}" alt="{{$third_post->title}}">
+                        <div class="overlay"></div>
+                        <a href="{{asset($third_post->fetured)}}" class="link-image js-zoom-image">
+                            <i class="seoicon-zoom"></i>
+                        </a>
+                        <a href="#" class="link-post">
+                            <i class="seoicon-link-bold"></i>
+                        </a>
+                    </div>
+
+                    <div class="post__content">
+
+                        <div class="post__content-info">
+
+                            <h2 class="post__title entry-title text-center">
+                                <a href="15_blog_details.html">{{$third_post->title}}</a>
+                            </h2>
+
+                            <div class="post-additional-info">
+
+                                        <span class="post__date">
+
+                                            <i class="seoicon-clock"></i>
+
+                                            <time class="published" datetime="2016-04-17 12:00:00">
+                                                {{$third_post->created_at->toFormattedDateString()}}
+                                            </time>
+
+                                        </span>
+
+                                <span class="category">
+                                            <i class="seoicon-tags"></i>
+                                            <a href="#"> </a>
+                                        </span>
+
+                                <span class="post__comments">
+                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
+                                            6
+                                        </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </article>
+                @endif
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row medium-padding120 bg-border-color">
+            <div class="container">
+                <div class="col-lg-12">
+                    @if($career)
+                    <div class="offers">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                                <div class="heading">
+                                    <h4 class="h1 heading-title">{{ $career->name  }}</h4>
+                                    <div class="heading-line">
+                                        <span class="short-line"></span>
+                                        <span class="long-line"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="case-item-wrap">
+                                 @foreach($career->posts()->orderBy('created_at','desc')->take(3)->get() as $post)
+                                    <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
+                                        <div class="case-item">
+                                            <div class="case-item__thumb">
+                                                <img src="{{$post->fetured}}" alt="our case">
+                                            </div>
+                                            <h6 class="case-item__title">{{$post->title}}</h6>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    <div class="padded-50"></div>
+                    <div class="offers">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                                <div class="heading">
+                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
+                                    <div class="heading-line">
+                                        <span class="short-line"></span>
+                                        <span class="long-line"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="case-item-wrap">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="case-item">
+                                        <div class="case-item__thumb">
+                                            <img src="app/img/2.png" alt="our case">
+                                        </div>
+                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
+                                    <div class="case-item">
+                                        <div class="case-item__thumb">
+                                            <img src="app/img/3.jpg" alt="our case">
+                                        </div>
+                                        <h6 class="text-center case-item__title">Claritas est etiam processus dynamicus</h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
+                                    <div class="case-item">
+                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
+                                            <img src="app/img/4.jpg" alt="our case">
+                                        </div>
+                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="padded-50"></div>
+                    <div class="offers">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                                <div class="heading">
+                                    <h4 class="h1 heading-title">Laravel 5.3</h4>
+                                    <div class="heading-line">
+                                        <span class="short-line"></span>
+                                        <span class="long-line"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="case-item-wrap">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="case-item">
+                                        <div class="case-item__thumb">
+                                            <img src="app/img/5.jpg" alt="our case">
+                                        </div>
+                                        <h6 class="case-item__title"><a href="#">Investigationes demonstraverunt legere</a></h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
+                                    <div class="case-item">
+                                        <div class="case-item__thumb">
+                                            <img src="app/img/2.png" alt="our case">
+                                        </div>
+                                        <h6 class="case-item__title">Claritas est etiam processus dynamicus</h6>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4  col-md-4 col-sm-6 col-xs-12">
+                                    <div class="case-item">
+                                        <div class="case-item__thumb mouseover poster-3d lightbox shadow animation-disabled" data-offset="5">
+                                            <img src="app/img/6.jpg" alt="our case">
+                                        </div>
+                                        <h6 class="case-item__title">quod mazim placerat facer possim assum</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="padded-50"></div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-    </body>
+    <!-- Subscribe Form -->
+
+    <div class="container-fluid bg-green-color">
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="subscribe scrollme">
+                        <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
+                            <h4 class="subscribe-title">Email Newsletters!</h4>
+                            <form class="subscribe-form" method="post" action="">
+                                <input class="email input-standard-grey input-white" name="email" required="required" placeholder="Your Email Address" type="email">
+                                <button class="subscr-btn">subscribe
+                                    <span class="semicircle--right"></span>
+                                </button>
+                            </form>
+                            <div class="sub-title">Sign up for new Seosignt content, updates, surveys & offers.</div>
+
+                        </div>
+
+                        <div class="images-block">
+                            <img src="app/img/subscr-gear.png" alt="gear" class="gear">
+                            <img src="app/img/subscr1.png" alt="mail" class="mail">
+                            <img src="app/img/subscr-mailopen.png" alt="mail" class="mail-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Subscribe Form -->
+</div>
+
+
+
+<!-- Footer -->
+@include('includes.footer')
+
+<!-- End Footer -->
+
+<svg style="display:none;">
+    <symbol id="arrow-left" viewBox="122.9 388.2 184.3 85">
+        <path d="M124.1,431.3c0.1,2,1,3.8,2.4,5.2c0,0,0.1,0.1,0.1,0.1l34.1,34.1c1.6,1.6,3.7,2.5,5.9,2.5s4.3-0.9,5.9-2.4
+		c1.6-1.6,2.4-3.7,2.4-5.9s-0.9-3.9-2.4-5.5l-19.9-19.5h11.1c1.5,0,2.7-1.5,2.7-3c0-1.5-1.2-3-2.7-3h-17.6c-1.1,0-2.1,0.6-2.5,1.6
+		c-0.4,1-0.2,2.1,0.6,2.9l24.4,24.4c0.6,0.6,0.9,1.3,0.9,2.1s-0.3,1.6-0.9,2.1c-0.6,0.6-1.3,0.9-2.1,0.9s-1.6-0.3-2.1-0.9
+		l-34.2-34.2c0,0,0,0,0,0c-0.6-0.6-0.8-1.4-0.9-1.9c0,0,0,0,0,0c0-0.2,0-0.4,0-0.6c0.1-0.6,0.3-1.1,0.7-1.6c0-0.1,0.1-0.1,0.2-0.2
+		l34.1-34.1c0.6-0.6,1.3-0.9,2.1-0.9s1.6,0.3,2.1,0.9c0.6,0.6,0.9,1.3,0.9,2.1s-0.3,1.6-0.9,2.1l-24.4,24.4c-0.8,0.8-1,2-0.6,3
+		c0.4,1,1.4,1.7,2.5,1.7h125.7c1.5,0,2.7-1,2.7-2.5c0-1.5-1.2-2.5-2.7-2.5H152.6l19.9-20.1c1.6-1.6,2.4-3.8,2.4-6s-0.9-4.4-2.4-6
+		c-1.6-1.6-3.7-2.5-5.9-2.5s-4.3,0.9-5.9,2.4l-34.1,34.1c-0.2,0.2-0.3,0.3-0.5,0.5c-1.1,1.2-1.8,2.8-2,4.4
+		C124.1,430.2,124.1,430.8,124.1,431.3C124.1,431.3,124.1,431.3,124.1,431.3z"></path>
+        <path d="M283.3,427.9h14.2c1.7,0,3,1.3,3,3c0,1.7-1.4,3-3,3H175.1c-1.5,0-2.7,1.5-2.7,3c0,1.5,1.2,3,2.7,3h122.4
+		c4.6,0,8.4-3.9,8.4-8.5c0-4.6-3.8-8.5-8.4-8.5h-14.2c-1.5,0-2.7,1-2.7,2.5C280.7,426.9,281.8,427.9,283.3,427.9z"></path>
+    </symbol>
+    <symbol id="arrow-right" viewBox="122.9 388.2 184.3 85">
+        <path d="M305.9,430.2c-0.1-2-1-3.8-2.4-5.2c0,0-0.1-0.1-0.1-0.1l-34.1-34.1c-1.6-1.6-3.7-2.5-5.9-2.5c-2.2,0-4.3,0.9-5.9,2.4
+		c-1.6,1.6-2.4,3.7-2.4,5.9s0.9,4.1,2.4,5.7l19.9,19.6h-11.1c-1.5,0-2.7,1.5-2.7,3c0,1.5,1.2,3,2.7,3h17.6c1.1,0,2.1-0.7,2.5-1.7
+		c0.4-1,0.2-2.2-0.6-2.9l-24.4-24.5c-0.6-0.6-0.9-1.3-0.9-2.1s0.3-1.6,0.9-2.1c0.6-0.6,1.3-0.9,2.1-0.9c0.8,0,1.6,0.3,2.1,0.9
+		l34.2,34.2c0,0,0,0,0,0c0.6,0.6,0.8,1.4,0.9,1.9c0,0,0,0,0,0c0,0.2,0,0.4,0,0.6c-0.1,0.6-0.3,1.1-0.7,1.6c0,0.1-0.1,0.1-0.2,0.2
+		l-34.1,34.1c-0.6,0.6-1.3,0.9-2.1,0.9s-1.6-0.3-2.1-0.9c-0.6-0.6-0.9-1.3-0.9-2.1s0.3-1.6,0.9-2.1l24.4-24.4c0.8-0.8,1-1.9,0.6-2.9
+		c-0.4-1-1.4-1.6-2.5-1.6H158.1c-1.5,0-2.7,1-2.7,2.5c0,1.5,1.2,2.5,2.7,2.5h119.3l-19.9,20c-1.6,1.6-2.4,3.7-2.4,6s0.9,4.4,2.4,5.9
+		c1.6,1.6,3.7,2.5,5.9,2.5s4.3-0.9,5.9-2.4l34.1-34.1c0.2-0.2,0.3-0.3,0.5-0.5c1.1-1.2,1.8-2.8,2-4.4
+		C305.9,431.3,305.9,430.8,305.9,430.2C305.9,430.2,305.9,430.2,305.9,430.2z"></path>
+        <path d="M146.7,433.9h-14.2c-1.7,0-3-1.3-3-3c0-1.7,1.4-3,3-3h122.4c1.5,0,2.7-1.5,2.7-3c0-1.5-1.2-3-2.7-3H132.4
+		c-4.6,0-8.4,3.9-8.4,8.5c0,4.6,3.8,8.5,8.4,8.5h14.2c1.5,0,2.7-1,2.7-2.5C149.3,434.9,148.1,433.9,146.7,433.9z"></path>
+    </symbol>
+    <symbol id="to-top" viewBox="0 0 32 32">
+        <path d="M17,22 L25.0005601,22 C27.7616745,22 30,19.7558048 30,17 C30,14.9035809 28.7132907,13.1085075 26.8828633,12.3655101
+         L26.8828633,12.3655101 C26.3600217,9.87224935 24.1486546,8 21.5,8 C20.6371017,8 19.8206159,8.19871575 19.0938083,8.55288165
+         C17.8911816,6.43144875 15.6127573,5 13,5 C9.13400656,5 6,8.13400656 6,12 C6,12.1381509 6.00400207,12.275367 6.01189661,12.4115388
+          L6.01189661,12.4115388 C4.23965876,13.1816085 3,14.9491311 3,17 C3,19.7614237 5.23249418,22 7.99943992,22 L16,22 L16,16 L12.75,19.25
+           L12,18.5 L16.5,14 L21,18.5 L20.25,19.25 L17,16 L17,22 L17,22 Z M16,22 L16,27 L17,27 L17,22 L16,22 L16,22 Z" id="cloud-upload"></path>
+    </symbol>
+
+</svg>
+
+<!-- Overlay Search -->
+
+<div class="overlay_search">
+    <div class="container">
+        <div class="row">
+            <div class="form_search-wrap">
+                <form>
+                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
+                    <a href="#" class="overlay_search-close">
+                        <span></span>
+                        <span></span>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Overlay Search -->
+
+<!-- JS Script -->
+
+<script src={{ asset("app/js/jquery-2.1.4.min.js")}}></script>
+<script src={{ asset("app/js/crum-mega-menu.js")}}></script>
+<script src={{ asset("app/js/swiper.jquery.min.js")}}></script>
+<script src={{ asset("app/js/theme-plugins.js")}}></script>
+<script src={{ asset("app/js/main.js")}}></script>
+<script src={{ asset("app/js/form-actions.js")}}></script>
+
+<script src={{asset("app/js/velocity.min.js")}}></script>
+<script src={{asset("app/js/ScrollMagic.min.js")}}></script>
+<script src={{asset("app/js/animation.velocity.min.js")}}></script>
+
+
+<!-- ...end JS Script -->
+
+</body>
 </html>

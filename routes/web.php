@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\FrontEndController::class, 'index'])->name('welcome');
+Route::get('/post/single_post/{slug}', [App\Http\Controllers\FrontEndController::class, 'singlePost'])->name('single_post');
+Route::get('/category/{id}',[App\Http\Controllers\FrontEndController::class,'category'])->name('category.single');
+Route::get('/tag/{id}',[App\Http\Controllers\FrontEndController::class,'tag'])->name('tag.single');
 
 Route::get('/test', function () {
     return App\Models\User::where('id',1)->first();
@@ -67,6 +68,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/posts', [App\Http\Controllers\PostsController::class, 'list'])->name('posts');
     Route::get('/tags', [App\Http\Controllers\TagController::class, 'index'])->name('tags');
     Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users');
+    Route::get('/settings',[App\Http\Controllers\SettingsController::class, 'index'])->name('settings')->middleware('admin');
+    Route::post('/settings/update',[App\Http\Controllers\SettingsController::class, 'update'])->name('settings.update')->middleware('admin');
 });
 
 Auth::routes();
